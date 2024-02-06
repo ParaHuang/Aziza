@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page1</title>
+</head>
+<body bgcolor="yellow">
+    <img src="img/logo.png"/><br>
+    <button onclick="changeColor()">click me to change background as red</button>
+    <br>
+    <script type="text/javascript">
+        //js:weak type language
+        //java:strong type language
+        //int x = 10;
+        //double y = 3.14;
+        //String z = "hello";
+        //1. define variable
+        var x = 10
+        var y = 3.14
+        var z = "hello"
+        document.write(x)   //write content in body
+        // alert(y)            //show a dialog
+        console.log(z)
+
+        var a;
+        console.log(a,typeof a)
+        a = 10;
+        console.log(a,typeof a)
+        a = 4.9;
+        console.log(a,typeof a)
+        a = "hello";
+        console.log(a,typeof a)
+        a = true
+        console.log(a,typeof a)
+        a = 'x'
+        console.log(a,typeof a)
+        // console.log(a)
+        //2. operators
+        console.log(3+4)            //7
+        console.log(9/5)            //1.8
+        console.log(5>2)            //true
+        console.log(5>2 && 4<2)     //false
+        console.log(5>2 || 4<2)     //true
+        
+        function changeColor(){
+            // console.log("changeColor")   
+            //in js, attribute name has to be in camel rule
+            document.bgColor = "red"
+        }
+        //call a function by name
+        // changeColor();
+    </script>
+
+</body>
+</html>
