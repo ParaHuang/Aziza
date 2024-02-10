@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 //			session.setAttribute("name", user.getName());
 			session.setAttribute("user", user);
 			
-			response.sendRedirect("index.jsp");//put this in the end
+			response.sendRedirect("IndexServlet");//put this in the end
 		}else {
 			//4.otherwise, show error message in the browser
 			//get the output stream of response
