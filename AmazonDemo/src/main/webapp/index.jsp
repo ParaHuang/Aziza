@@ -37,9 +37,6 @@
 		</tbody>
 	</table>
 	
-	
-	
-	
 	<!-- 
 		for(Product p:list){
 			p.getName()
