@@ -31,5 +31,26 @@ public class ProductDao {
 		}
 		return list;
 	}
+
+	public Product queryProductByNo(String no) {
+		
+		try {
+			Connection conn = BaseDao.getConnection();
+			String sql = "select * from productTb where no = "+no;
+			PreparedStatement psta = conn.prepareStatement(sql);
+			ResultSet rs =  psta.executeQuery();
+			
+			if(rs.next()) {
+				Product p = new Product(rs.getInt(1), rs.getString(2), rs.getDouble(3),
+						rs.getString(4), rs.getString(5));
+				return p;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 }
 

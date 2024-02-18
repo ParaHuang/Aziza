@@ -6,37 +6,62 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+th{
+	text-align:left
+}
+</style>
 </head>
 <body>
 	Main Page<br>
-	Welcome!${user.name }   <br>
+	Welcome!
+	<c:choose>
+		<c:when test="${user!=null }">
+			<!-- if you logged, then show your name -->
+			${user.name }
+		</c:when>
+		<c:otherwise>
+			<!-- otherwise , then show "Guest" -->
+			Guest<br>
+			<a href="login.jsp">click here</a> to login
+		</c:otherwise>
+	</c:choose>
+	
+	
+	
+	 <br><br><br>
 	<!-- the expression language user.name is acctually using user.getName() -->
 	all the products
 	<br>
 	
-	<table width="800" border="1">
+	<table width="800">
 		<thead>
 			<tr>
 				<th>no</th>
 				<th>name</th>
 				<th>price</th>
 				<th>picture</th>
-				<th>description</th>
+				<!-- <th>description</th> -->
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${list }" var="p">
 				<tr>
 					<td>${p.no }</td>
-					<td>${p.name }</td>
+					<td><a href="detail.htm?no=${p.no }">${p.name }</a></td>
 					<td>${p.price }</td>
 					<td><img width="100px" src="img/${p.picture }"/></td>
-					<td>${p.descirption }</td>
+					<%-- <td>${p.descirption }</td> --%>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	
+	<!-- use link to start a request , it's get request
+		1.get request will expose all the information
+		2.the parameter length is limited in get request
+		3.if there are foreigner characters in request parameter, then it will be messy code
+		   then you need to write program to decode
+	 -->
 	<!-- 
 		for(Product p:list){
 			p.getName()
