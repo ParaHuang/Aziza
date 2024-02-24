@@ -18,7 +18,7 @@ th{
 	<c:choose>
 		<c:when test="${user!=null }">
 			<!-- if you logged, then show your name -->
-			${user.name }
+			<a href="xxxxx">${user.name }</a>
 		</c:when>
 		<c:otherwise>
 			<!-- otherwise , then show "Guest" -->
