@@ -16,6 +16,9 @@ function buy(){
 			//set the location as login.jsp
 			location.href="login.jsp";
 		}
+	}else{
+		//buy it
+		location.href="BuyServlet?pNo=${product.no}&price=${product.price}";
 	}
 }
 
@@ -32,3 +35,7 @@ ${product.price }
 
 </body>
 </html>
+
+
+
+

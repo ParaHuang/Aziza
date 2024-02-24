@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 		User user = dao.loginByUsernamePassword(username,password);
 		
 		
-		
+		//getXxx   setXxx
 		if(user!=null) {
 			//3.if exist, save user infomation into session,go to main page
 			//get session
@@ -35,6 +35,7 @@ public class LoginServlet extends HttpServlet {
 //			session.setAttribute("name of infoamtion", infomation you want to save);
 //			session.setAttribute("name", user.getName());
 			session.setAttribute("user", user);
+//			session.setAttribute("hello", "new infomation");
 			
 			response.sendRedirect("IndexServlet");//put this in the end
 		}else {
