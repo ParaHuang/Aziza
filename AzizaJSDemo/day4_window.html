@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="openPage()">open a page</button>
+    <script type="text/javascript">
+        function openPage(){
+            window.open("page4.html","","width=300px,height=500px,top=100px,left=300px");
+        }
+
+        var i=1;
+        function print(){
+            console.log(i++);
+        }
+
+        setInterval(print,1000);
+    </script>
+</body>
+</html>

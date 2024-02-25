@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="time"></div>
+    <script type="text/javascript">
+        function showTime(){
+            //Sun Feb 25 2024 23:24:31 GMT+0800 (China Standard Time)
+            //2024-2-25  23:24:31
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth()+1;
+            var day = date.getDate();
+            var hour = date.getHours();
+            var min = date.getMinutes();
+            var sec = date.getSeconds();
+            var box = document.getElementById("time");
+            box.innerText = year+"-"+month+"-"+day+" "+hour+":"+min+":"+sec;
+
+            //exercise1:2024-2-25  23:4:5   ->  2024-02-25  23:04:05
+            //how to find div in js code
+            //how to set the text of div by js code
+        }
+
+        setInterval(showTime,1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="startCount()">start to count</button>
+    <button onclick="stopCount()">stop</button>
+    <div id="box">0</div>
+    <img src="img/logo.png"/><br>
+    use setInterval to change pictures for img,
+    changing src of img object
+    <script type="text/javascript">
+        var i=1;
+        function count(){
+           document.getElementById("box").innerText = i;
+           i++;
+        }
+
+        var x;
+        function startCount(){
+            x = setInterval(count,1000);
+        }
+
+        function stopCount(){
+            clearInterval(x);
+        }
+        //setInterval(count,1000);
+        //setInterval(count,1000);
+        //setInterval(count,1000);
+        //setInterval(count,1000);
+        //setInterval(count,1000);->x
+
+        
+    </script>
+</body>
+</html>
