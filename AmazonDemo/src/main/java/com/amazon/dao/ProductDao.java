@@ -10,14 +10,16 @@ import com.amazon.bean.Product;
 
 //dao: data access object (deal with database)
 public class ProductDao {
-
+	Connection conn;		//default value :null
+	PreparedStatement psta;
+	ResultSet rs;
 	public ArrayList<Product> queryAllProducts() {
 		ArrayList<Product> list = new ArrayList<>();
 		try {
-			Connection conn = BaseDao.getConnection();
+			conn = BaseDao.getConnection();
 			String sql = "select * from productTb";
-			PreparedStatement psta = conn.prepareStatement(sql);
-			ResultSet rs =  psta.executeQuery();
+			psta = conn.prepareStatement(sql);
+			rs =  psta.executeQuery();
 			
 			while(rs.next()) {
 				Product p = new Product(rs.getInt(1), rs.getString(2), rs.getDouble(3),
@@ -28,6 +30,9 @@ public class ProductDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			//no matter there is exception or not, this will be execute in the end
+			BaseDao.close(conn, psta, rs);
 		}
 		return list;
 	}
@@ -35,10 +40,10 @@ public class ProductDao {
 	public Product queryProductByNo(String no) {
 		
 		try {
-			Connection conn = BaseDao.getConnection();
+			conn = BaseDao.getConnection();
 			String sql = "select * from productTb where no = "+no;
-			PreparedStatement psta = conn.prepareStatement(sql);
-			ResultSet rs =  psta.executeQuery();
+			psta = conn.prepareStatement(sql);
+			rs =  psta.executeQuery();
 			
 			if(rs.next()) {
 				Product p = new Product(rs.getInt(1), rs.getString(2), rs.getDouble(3),
@@ -48,6 +53,9 @@ public class ProductDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			//no matter there is exception or not, this will be execute in the end
+			BaseDao.close(conn, psta, rs);
 		}
 		
 		return null;

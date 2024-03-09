@@ -11,24 +11,13 @@ import com.amazon.bean.Order;
 import com.amazon.bean.Product;
 
 public class OrderDao {
-	
+	Connection conn;		//default value :null
+	PreparedStatement psta;
+	ResultSet rs;
 	public int addOrder(String username,String pNo,String price){
-		try {
-			Connection conn = BaseDao.getConnection();
-			String sql = "insert into orderTb values (null,?,?,?,now())";
-			PreparedStatement psta = conn.prepareStatement(sql);
-			//set up arguments
-			psta.setString(1, username);
-			psta.setString(2, pNo);
-			psta.setString(3, price);
-			//execute operation
-			int rows = psta.executeUpdate();
-			return rows;//1
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return 0;
+		String sql = "insert into orderTb values (null,?,?,?,now())";
+		int row = BaseDao.dbUtil(sql, username,pNo,price);
+		return row;
 	}
 	
 	//1.Order.java
@@ -37,11 +26,11 @@ public class OrderDao {
 		//"select * from orderTb where username = ?"
 		ArrayList<Order> list = new ArrayList<>();
 		try {
-			Connection conn = BaseDao.getConnection();
+			conn = BaseDao.getConnection();
 			String sql = "select * from orderTb,productTb where username = ? and productTb.no = pNO";
-			PreparedStatement psta = conn.prepareStatement(sql);
+			psta = conn.prepareStatement(sql);
 			psta.setString(1, username);
-			ResultSet rs =  psta.executeQuery();
+			rs =  psta.executeQuery();
 			
 			while(rs.next()) {
 				Product p = new Product(rs.getInt(6),rs.getString("name"),rs.getInt(8),rs.getString(9),rs.getString(10));
@@ -52,6 +41,8 @@ public class OrderDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			BaseDao.close(conn, psta, rs);
 		}
 		return list;
 	}

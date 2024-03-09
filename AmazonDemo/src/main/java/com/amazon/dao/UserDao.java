@@ -11,39 +11,23 @@ import com.amazon.bean.User;
 public class UserDao {
 	//add User
 	public int addUser(String username,String password,String phoneNumber,String name,String email,String location) {
-		try {
-			//1.get Connection
-			Connection conn = BaseDao.getConnection();
-			//2.get Statement object (a tool created based on command/sql)
-			String sql = "insert into userTb VALUES (?,?,?,?,?,?)";
-			PreparedStatement psta = conn.prepareStatement(sql);
-			//3.set up those ?
-//			psta.setDouble(0, 0);
-//			psta.setInt(0, 0);
-//			psta.setString(which ?, what value);
-			psta.setString(1, username);
-			psta.setString(2, password);
-			psta.setString(3, phoneNumber);
-			psta.setString(4, name);
-			psta.setString(5, email);
-			psta.setString(6, location);
-			
-			int rows = psta.executeUpdate();
-			//reaction should be done at where this method is used
-			return rows;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return 0;
+		String sql = "insert into userTb VALUES (?,?,?,?,?,?)";
+		int row = BaseDao.dbUtil(sql, username,password,phoneNumber,name,email,location);
+		return row;
+	}
+	//delete User
+	public int deleteUser(String username) {
+		String sql = "delete from usertb where username=?";
+		int row = BaseDao.dbUtil(sql, username);
+		return row;
 	}
 	
-	
-	//delete User
-	
-	
-	
 	//update User
+	public int updateUser(String username,String password,String phoneNumber,String name,String email,String location) {
+		String sql = "update usertb set password=?,phoneNumber=?,name=?,email=?,location=? where username=?";
+		int row = BaseDao.dbUtil(sql, password,phoneNumber,name,email,location,username);
+		return row;
+	}
 	
 	
 	//query all the users
@@ -80,8 +64,29 @@ public class UserDao {
 	}
 	
 	public static void main(String[] args) {
-		new UserDao().queryAllUsers();
+//		new UserDao().queryAllUsers();
+		fun(10);
+		System.out.println();
+		fun(5,6);
+		System.out.println();
+		fun(8,6,1);
+		System.out.println();
+		fun(8,6,1,90);
+		System.out.println();
+		fun(8,6,1);
+		System.out.println();
+		fun();
 	}
+	
+	//
+	public static void fun(int... params) {
+		for(int i=0 ; i<params.length ; i++) {
+			System.out.println(params[i]);
+		}
+	}
+	
+	
+	
 	
 	public User loginByUsernamePassword(String username,String password) {
 		try {
