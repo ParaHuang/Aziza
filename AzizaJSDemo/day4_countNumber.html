@@ -19,13 +19,18 @@
            i++;
         }
 
-        var x;
+        var x = null;
         function startCount(){
-            x = setInterval(count,1000);
+            if(x==null){
+                x = setInterval(count,1000);//start a cycle
+            }
         }
 
         function stopCount(){
-            clearInterval(x);
+            if(x!=null){
+                clearInterval(x);   //stop the cycle
+                x = null;
+            }
         }
         //setInterval(count,1000);
         //setInterval(count,1000);

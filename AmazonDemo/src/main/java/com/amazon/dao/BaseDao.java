@@ -19,7 +19,7 @@ public class BaseDao {
 	}
 	
 	//get Connection
-	public static Connection getConnection() throws SQLException {
+	public static Connection getConnection() throws SQLException  {
 		//2.get Connection  
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/amazon?useSSL=false",
 				"root", "a123");
