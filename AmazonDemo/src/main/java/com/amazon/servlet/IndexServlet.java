@@ -20,7 +20,14 @@ import com.amazon.dao.UserDao;
 public class IndexServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Product> list = new ProductDao().queryAllProducts();
+		String page = req.getParameter("page");//null
+		int start = 0;
+		if(page!=null) {
+			int p = Integer.parseInt(page);
+			start = (p-1)*10;
+		}
+		int count = 10;
+		List<Product> list = new ProductDao().queryAllProducts(start,count);
 		req.setAttribute("list", list);
 		
 		//redirect

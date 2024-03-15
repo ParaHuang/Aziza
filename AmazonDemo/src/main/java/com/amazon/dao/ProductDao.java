@@ -13,11 +13,11 @@ public class ProductDao {
 	Connection conn;		//default value :null
 	PreparedStatement psta;
 	ResultSet rs;
-	public ArrayList<Product> queryAllProducts() {
+	public ArrayList<Product> queryAllProducts(int start,int count) {
 		ArrayList<Product> list = new ArrayList<>();
 		try {
 			conn = BaseDao.getConnection();
-			String sql = "select * from productTb";
+			String sql = "select * from productTb limit "+start+","+count;
 			psta = conn.prepareStatement(sql);
 			rs =  psta.executeQuery();
 			

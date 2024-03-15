@@ -2,6 +2,7 @@ package com.amazon.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -37,6 +38,14 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("user", user);
 //			session.setAttribute("hello", "new infomation");
 			
+			//save personal infomation in cookie
+			Cookie cookie1 = new Cookie("username", username);
+			Cookie cookie2 = new Cookie("password", password);
+			cookie1.setMaxAge(7*24*3600*1000);
+			cookie2.setMaxAge(7*24*3600*1000);
+			
+			response.addCookie(cookie1);
+			response.addCookie(cookie2);
 			response.sendRedirect("IndexServlet");//put this in the end
 		}else {
 			//4.otherwise, show error message in the browser

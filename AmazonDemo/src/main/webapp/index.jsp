@@ -54,8 +54,24 @@ th{
 					<%-- <td>${p.descirption }</td> --%>
 				</tr>
 			</c:forEach>
+			<tr>
+				<td colspan="4" align="center">
+				<a href="IndexServlet?page=${param.page-1 }">previous</a>
+				<c:choose>
+					<c:when test="${param.page==null }">
+						<a href="IndexServlet?page=2">next</a>
+					</c:when>
+					<c:otherwise>
+						<a href="IndexServlet?page=${param.page+1 }">next</a>
+					</c:otherwise>
+				</c:choose>
+				
+				
+				</td>
+			</tr>
 		</tbody>
 	</table>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<!-- use link to start a request , it's get request
 		1.get request will expose all the information
 		2.the parameter length is limited in get request
