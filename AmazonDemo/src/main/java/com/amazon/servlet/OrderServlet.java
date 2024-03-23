@@ -24,7 +24,7 @@ public class OrderServlet extends HttpServlet{
 		List<Order> list = new OrderDao().getOrdersByUsername(u.getUsername());
 		req.setAttribute("orderList", list);
 		req.getRequestDispatcher("order.jsp").forward(req, resp);
-		
+	
 	}
 	
 	@Override

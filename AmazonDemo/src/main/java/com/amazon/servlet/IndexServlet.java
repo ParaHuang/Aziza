@@ -27,8 +27,15 @@ public class IndexServlet extends HttpServlet {
 			start = (p-1)*10;
 		}
 		int count = 10;
-		List<Product> list = new ProductDao().queryAllProducts(start,count);
+		ProductDao dao = new ProductDao();
+		List<Product> list = dao.queryAllProducts(start,count);
 		req.setAttribute("list", list);
+		int totalCount = dao.getTotalCounts();
+		int totalPages = totalCount/count;
+		if(totalCount%count>0) {
+			totalPages+=1;
+		}
+		req.setAttribute("totalPages", totalPages);
 		
 		//redirect
 //		resp.sendRedirect("index.jsp");

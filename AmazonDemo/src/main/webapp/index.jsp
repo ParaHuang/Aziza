@@ -37,12 +37,42 @@ th{
 	<table width="800">
 		<thead>
 			<tr>
+				<td colspan="4" align="center">
+				<c:if test="${param.page!=1 && param.page!=null}">
+					<a href="IndexServlet?page=${param.page-1 }">previous</a>
+				</c:if>
+				
+				
+				<c:forEach begin="1" end="${totalPages }" var="i">
+					<c:choose>
+						<c:when test="${param.page!=i}">
+							<a href="IndexServlet?page=${i }">${i }</a>&nbsp;&nbsp;
+						</c:when>
+						<c:otherwise>
+							<a href="IndexServlet?page=${i }" style="font-size:32px;color:red">${i }</a>&nbsp;&nbsp;
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:choose>
+					<c:when test="${param.page==null }">
+						<a href="IndexServlet?page=2">next</a>
+					</c:when>
+					
+					<c:when test="${param.page!=totalPages }">
+						<a href="IndexServlet?page=${param.page+1 }">next</a>
+					</c:when>
+				</c:choose>
+				</td>
+			</tr>
+		
+			<tr>
 				<th>no</th>
 				<th>name</th>
 				<th>price</th>
 				<th>picture</th>
 				<!-- <th>description</th> -->
 			</tr>
+			
 		</thead>
 		<tbody>
 			<c:forEach items="${list }" var="p">
@@ -54,21 +84,7 @@ th{
 					<%-- <td>${p.descirption }</td> --%>
 				</tr>
 			</c:forEach>
-			<tr>
-				<td colspan="4" align="center">
-				<a href="IndexServlet?page=${param.page-1 }">previous</a>
-				<c:choose>
-					<c:when test="${param.page==null }">
-						<a href="IndexServlet?page=2">next</a>
-					</c:when>
-					<c:otherwise>
-						<a href="IndexServlet?page=${param.page+1 }">next</a>
-					</c:otherwise>
-				</c:choose>
-				
-				
-				</td>
-			</tr>
+			
 		</tbody>
 	</table>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>

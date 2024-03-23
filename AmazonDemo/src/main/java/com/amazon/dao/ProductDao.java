@@ -60,5 +60,27 @@ public class ProductDao {
 		
 		return null;
 	}
+
+	public int getTotalCounts() {
+		
+		try {
+			conn = BaseDao.getConnection();
+			String sql = "select count(*) from productTb";
+			psta = conn.prepareStatement(sql);
+			rs =  psta.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			//no matter there is exception or not, this will be execute in the end
+			BaseDao.close(conn, psta, rs);
+		}
+		
+		return -1;
+	}
 }
 
