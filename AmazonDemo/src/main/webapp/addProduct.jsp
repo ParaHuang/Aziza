@@ -7,8 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-product name:<input/><br>
-product image:<input type="file"><br>
+<form action="AddProductServlet" method="post" enctype="multipart/form-data">
+product name:<input name="name"/><br>
+product price:<input name="price"/><br>
+product image:<input type="file" name="picture"><br>
+product description:<textarea name="description" rows="10" cols="50"></textarea><br>
 <input type="submit">
+
+</form>
 </body>
 </html>

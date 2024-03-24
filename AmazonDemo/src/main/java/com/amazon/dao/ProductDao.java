@@ -82,5 +82,23 @@ public class ProductDao {
 		
 		return -1;
 	}
+
+	public int addProduct(String name, String price, String newName, String description) {
+		String sql = "insert into producttb values (null,?,?,?,?)";
+		int row = BaseDao.dbUtil(sql, name,price,newName,description);
+		return row;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
 

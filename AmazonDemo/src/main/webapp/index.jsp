@@ -80,7 +80,7 @@ th{
 					<td>${p.no }</td>
 					<td><a href="detail.htm?no=${p.no }">${p.name }</a></td>
 					<td>${p.price }</td>
-					<td><img width="100px" src="img/${p.picture }"/></td>
+					<td><img width="100px" src="upload/${p.picture }"/></td>
 					<%-- <td>${p.descirption }</td> --%>
 				</tr>
 			</c:forEach>
