@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="changeColor()">change the background of ul</button><br>
+    <input id="num" placeholder="which li do you want to change the font color?"/>
+    <input id="color" placeholder="change the what color?"/>
+    <button onclick="changeFontColor()">change the background of li</button><br>
+    <input id="fruitName" placeholder="enter the name of fruit"/>
+    <button onclick="addFruit()">add a new fruit in the end</button><br>
+    <input id="num2" placeholder="which li do you want to delete?"/>
+    <button onclick="deleteLi()">delete</button>
+
+    <ul id="fruit">
+        <li>apple</li>
+        <li style="color: brown;">orange</li>
+        <li>strawberry</li>
+        <li>banana</li>
+    </ul>
+
+    <script type="text/javascript">
+        function deleteLi(){
+            // document.getElementById("fruit").remove();
+            var num = document.getElementById("num2").value;
+            var lis = document.getElementsByTagName("li");
+            lis[num-1].remove();
+            document.getElementById("num2").value = "";
+        }
+
+        function addFruit(){
+            var fruitName = document.getElementById("fruitName").value;
+            //create a new li
+            var li = document.createElement("li");//<li>apple</li>
+            //set the text of li
+            li.innerText = fruitName;
+            // li.style.color = "pink";
+            // console.log(li);
+            //add it in the end of ul
+            document.getElementById("fruit").appendChild(li);
+        }
+
+        function changeColor(){
+            //1.find the node
+            var node = document.getElementById("fruit");
+            //2.modify the node
+            node.style.background = "cyan";
+        }
+
+        function changeFontColor(){
+            //1. find out what I input
+            var num = document.getElementById("num").value;
+            var c = document.getElementById("color").value;
+            //2. change the font color of a specific li into color
+            //2_1:find all li
+            var lis = document.getElementsByTagName("li");
+            //2_2.change the one
+            // lis[num-1].innerText = "hello";
+            lis[num-1].style.color = c;
+
+        }
+    </script>
+</body>
+</html>
