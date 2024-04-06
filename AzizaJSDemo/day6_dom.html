@@ -40,7 +40,9 @@
             // li.style.color = "pink";
             // console.log(li);
             //add it in the end of ul
-            document.getElementById("fruit").appendChild(li);
+            // document.getElementById("fruit").appendChild(li);
+            var lis = document.getElementsByTagName("li");
+            document.getElementById("fruit").insertBefore(li,lis[0]);
         }
 
         function changeColor(){
