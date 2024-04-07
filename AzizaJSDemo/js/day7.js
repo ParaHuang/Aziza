@@ -20,3 +20,6 @@ document.getElementById("btn2").onclick = fun2;
 document.getElementById("btn3").onclick = function(){
     alert("anonymous function");
 };
+document.getElementById("btn4").addEventListener('click',function(){
+    alert("addEventListener");
+});

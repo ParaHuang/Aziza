@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="num" placeholder="which li do you want to change the font color?"/>
+    <input id="color" placeholder="change the what color?"/>
+    <button onclick="changeFontColor()">change the background of li</button><br>
+    <ul id="fruit">
+        <li>apple</li>
+        <li style="color: brown;">orange</li>
+        <li>strawberry</li>
+        <li>banana</li>
+    </ul>
+
+    <script type="text/javascript">
+        var numBox = document.getElementById("num");
+        var colorBox = document.getElementById("color");
+        numBox.onkeydown = function(){
+            if(event.keyCode == 13){
+                colorBox.focus();
+            }
+        }
+
+        colorBox.onkeydown = function(){
+            if(event.keyCode == 13){
+                changeFontColor();
+            }
+        }
+
+        function changeFontColor(){
+            //1. find out what I input
+            var num = numBox.value;
+            var c = colorBox.value;
+            //2. change the font color of a specific li into color
+            //2_1:find all li
+            var lis = document.getElementsByTagName("li");
+            //2_2.change the one
+            // lis[num-1].innerText = "hello";
+            lis[num-1].style.color = c;
+            numBox.value = "";
+            colorBox.value = "";
+        }
+
+    </script>
+</body>
+</html>

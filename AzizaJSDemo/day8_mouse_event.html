@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #d3{
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+        #d3:hover{
+            background: beige;
+        }
+    </style>
+</head>
+<body><br><br><br><br><br><br><br><br><br>
+    <div id="d1" style="width: 300px;height: 300px;background: yellow;"
+        onclick="a()"
+        onmouseenter="b()" onmouseleave="c()"   
+        onmouseover="d()" onmouseout="e()"
+        onmousemove="f()"
+        onmousedown="g()"
+        onmouseup="h()"
+    >
+        <div style="width: 50px;height: 50px;background: red;"></div>
+    </div>
+    <div style="width: 100px;height: 100px;background: cyan;"
+    onmouseenter="this.style.background='red'"
+    onmouseleave="this.style.background='cyan'"
+    ></div>
+    <div id="d3"></div>
+<!--onmouseenter,onmouseleave: move into child label, it wouldnt call those two events -->
+<!--onmouseover,onmouseout: move into child label, it wouldnt call those two events 
+    onmousewheel , when wheel scrooling
+-->
+    <script type="text/javascript">
+        var a = function(){
+            console.log("click on div");
+        }
+        var b = function(){
+            // console.log("enter into div");
+            // document.getElementById("d1").style.background = "pink";
+        }
+        var c = function(){
+            // console.log("leave div");
+            // document.getElementById("d1").style.background = "yellow";
+        }
+        var d = function(){
+            console.log("enter/over div");
+        }
+        var e = function(){
+            console.log("leave/out div");
+        }
+        var f = function(){
+            // console.log("move");
+            //invisible object:event
+            //event contains every detail 
+            // console.log("position in window--","x:",event.x,"   y:",event.y);
+            console.log("position in this label--","x:",event.offsetX,"   y:",event.offsetY);
+        }
+        var g = function(){
+            console.log("pressing");
+        }
+        var h = function(){
+            console.log("up");
+        }
+
+        document.getElementById("d3").addEventListener("mousemove",function(){
+            console.log(event.offsetX)
+        })
+    </script>
+</body>
+</html>

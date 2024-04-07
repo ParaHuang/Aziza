@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="i1"/>
+
+    <script type="text/javascript">
+        //works on every key
+        document.getElementById("i1").onkeydown = function(){
+            //only allowed to enter number
+            //1.what kind of key are number key
+            console.log("down"+event.keyCode)
+            var code = event.keyCode;
+            //2.how to forbid typing
+            if((code<48 || code>57) && code!=8){
+                return false;
+            }
+        }
+        //only works on character key   a  A
+        document.getElementById("i1").onkeypress = function(){
+            //console.log("press"+event.keyCode)
+        }
+        //works on every key
+        document.getElementById("i1").addEventListener("keyup",function(){
+            // console.log("up"+event.keyCode);
+        });
+
+
+    </script>
+</body>
+</html>
