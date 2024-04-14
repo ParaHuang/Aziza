@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>               
+       
+        //regular expression
+        var regex = /abc/;          //contains abc
+        //use it to test some string is under certain condition
+        var f = regex.test("heabcllo ");
+        console.log(f);
+
+        regex = /abc\d/;         //contains a number after abc
+        console.log(regex.test("hello abc7"));
+
+        regex = /abc\w/;         //contains a character after abc
+        console.log(regex.test("hello abcY"));
+
+        regex = /\s/;         //contains a character after abc
+        console.log(regex.test("hello\nabcY"));  //\t  tab
+
+        regex = /^abc./;         //contains a character after abc
+        console.log(regex.test("abcYsdjflsdjfls"));  //\t  tab
+
+        var regexId = /^\d{17}[0-9X]$/;
+        console.log("id correct?--",regexId.test("43012119901119732X"))
+
+        regex = /^abc{3,6}$/;        
+        console.log(regex.test("abccccc"));  
+
+        var regexEmail = /^\w{1,}@\w{1,}[.]\w{1,}$/;
+        var email = "paradox41@163.com";
+        console.log(regexEmail.test(email));
+        // console.log(email.indexOf("."));
+        // console.log(email.lastIndexOf("."))
+        // a. contains @ and .　　　　                  (sample: abcedef           this is wrong)
+        // b. only contains @ and . for once                (sample: abce@d.e.f  this is wrong)
+        // c. @ and . can't be in the begining or it the end     (sample:  .abce@d.ef  this is wrong)
+        // d. . can't be in front of or next to @         (sample:   a.b@c   this is wrong      a@.b   this is wrong)
+        //j@bbbbbbb.c
+    </script>
+</body>
+</html>
